@@ -1,0 +1,74 @@
+﻿<Window x:Class="ADO_NET_HW4_BookCatalog_Classic.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:ADO_NET_HW4_BookCatalog_Classic"
+        mc:Ignorable="d"
+     Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="60"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox
+                Name="Author_Cbox"
+                FontSize="10"
+                Margin="10"
+                SelectionChanged="Author_Cbox_SelectionChanged"
+                ItemsSource="{Binding}"
+            
+            materialDesign:HintAssist.Hint="Authors"  
+             
+            >
+            </ComboBox>
+
+            <ComboBox
+                Name="Category_Cbox"
+                Grid.Column="1"
+                IsEnabled="False"
+                materialDesign:HintAssist.Hint="Categories"
+                Margin="10"
+                SelectionChanged="Category_Cbox_SelectionChanged"
+           
+            >
+            </ComboBox>
+            <TextBox
+                FontSize="20"
+                 Margin="10"
+            Name="Txt_Search"
+            Grid.Column="2"
+            materialDesign:HintAssist.Hint="Title"
+            BorderThickness="1"
+            VerticalAlignment="Center"
+                KeyDown="Txt_Search_KeyDown"/>
+
+            <Button
+                Grid.Column="3"
+               Margin="10"
+  ToolTip="MaterialDesignIconForegroundButton" Click="Btn_Search_Click">
+                <materialDesign:PackIcon
+    Kind="Search" />
+
+            </Button>
+        </Grid>
+
+
+        <DataGrid SelectionMode="Single" Name="ListBooks" Grid.Row="1" FontSize="15" ScrollViewer.VerticalScrollBarVisibility="Auto"
+          ScrollViewer.CanContentScroll="False">
+
+
+        </DataGrid>
+
+
+    </Grid>
+</Window>
